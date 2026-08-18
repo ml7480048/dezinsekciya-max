@@ -257,8 +257,8 @@
   .qa button .pm svg{width:18px;height:18px;color:var(--green-deep);transition:transform .3s var(--ease)}
   .qa.open button .pm{background:var(--lime)}
   .qa.open button .pm svg{transform:rotate(45deg)}
-  .qa .ans{max-height:0;overflow:hidden;transition:max-height .35s var(--ease)}
-  .qa .ans p{padding:0 0 1.4rem;color:var(--ink-soft);max-width:65ch}
+  .qa .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease)}
+  .qa .ans p{overflow:hidden;min-height:0;padding:0 0 1.4rem;color:var(--ink-soft);max-width:65ch}
 
   /* ---------- contact ---------- */
   .contact{background:var(--green-900);color:#fff}
@@ -344,6 +344,53 @@
   .mobile-menu a.mm-link{font-family:'Unbounded';font-weight:600;font-size:1.6rem;padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
   .mobile-menu .mm-actions{margin-top:auto;display:grid;gap:.8rem}
   .mobile-menu .mm-actions .btn{width:100%;justify-content:center}
+
+  /* ============ POLISH LAYER (impeccable craft pass) ============ */
+  :root{
+    --r-card:16px;
+    --shadow:0 1px 2px rgba(20,41,77,.05), 0 16px 38px -18px rgba(20,41,77,.24);
+    --shadow-soft:0 1px 2px rgba(20,41,77,.04), 0 12px 28px -18px rgba(20,41,77,.16);
+  }
+  h1,h2,h3{letter-spacing:-.025em}
+  .hero-title{letter-spacing:-.038em;font-size:clamp(2.5rem,5.6vw,4.15rem)}
+  .sec-head h2{letter-spacing:-.03em}
+  .hero-sub{font-size:1.18rem;line-height:1.62;max-width:35rem}
+  /* kicker: a chosen, branded motif (lead rule) instead of an uppercase eyebrow on every section */
+  .kicker{display:inline-flex;align-items:center;gap:.65rem;text-transform:none;letter-spacing:-.01em;font-size:.95rem;font-weight:700;color:var(--green-deep);margin-bottom:1rem}
+  .kicker::before{content:"";width:24px;height:2px;border-radius:2px;background:var(--lime);flex:none}
+  .why .kicker,.contact .kicker{color:#cfe0ff}
+  .sec-head.center .kicker{justify-content:center}
+  /* elevation declared once: soft shadow, no hairline border (kills the ghost-card look) */
+  .fcard.rat{border:none;box-shadow:var(--shadow-soft)}
+  .pv{border:none;box-shadow:var(--shadow-soft)}
+  .scard{box-shadow:0 1px 2px rgba(20,41,77,.03)}
+  .scard:hover{box-shadow:var(--shadow-soft)}
+  .rev:hover{box-shadow:var(--shadow-soft);transform:translateY(-2px);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+  .hero-card{border-radius:20px}
+  .guarantee-box{border-radius:14px}
+  /* calmer, more expensive button glow */
+  .btn-primary{box-shadow:0 8px 20px -12px rgba(240,184,0,.85)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(240,184,0,.9)}
+  .brand-logo{height:40px}
+  /* hero: quieter layered background + tighter rhythm */
+  .hero{background:radial-gradient(1100px 540px at 86% -14%,rgba(52,99,175,.15),transparent 60%),radial-gradient(720px 460px at -10% 112%,rgba(255,210,30,.12),transparent 58%),var(--paper)}
+  .hero-grid{gap:64px;align-items:center}
+  /* social-proof strip under the hero */
+  .hero-proof{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--line-soft)}
+  .hero-proof .lbl{font-weight:700;font-size:.82rem;letter-spacing:.02em;color:var(--ink)}
+  .hero-proof .names{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;color:var(--ink-soft);font-size:.9rem}
+  .hero-proof .names span{position:relative;font-weight:600}
+  .hero-proof .names span:not(:last-child)::after{content:"";position:absolute;right:-.62rem;top:50%;width:3px;height:3px;border-radius:50%;background:var(--lime);transform:translateY(-50%)}
+  /* refined reveal: exponential ease-out with a soft focus-in, hero excluded (already visible) */
+  .reveal{opacity:0;transform:translateY(22px);filter:blur(10px);transition:opacity .75s var(--ease),transform .75s var(--ease),filter .75s var(--ease)}
+  .reveal.in{opacity:1;transform:none;filter:blur(0)}
+  @media(prefers-reduced-motion:reduce){.reveal{filter:none}}
+  /* section rhythm: a touch more air */
+  .sec-head{margin-bottom:3.4rem}
+  /* FAQ: jank-free open/close via grid rows (no max-height thrash) */
+  .qa .ans{max-height:none;overflow:visible;display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease)}
+  .qa.open .ans{grid-template-rows:1fr}
+  .qa .ans>p{overflow:hidden;min-height:0}
 
   /* --- MaxPro additions --- */
   .brand-logo{height:38px;width:auto;display:block}
@@ -439,6 +486,10 @@
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Стандарт HACCP / ISO 22000</div>
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Безпечно для дітей і тварин</div>
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Мінімум підготовки приміщення</div>
+      </div>
+      <div class="hero-proof">
+        <span class="lbl">Нам довіряють</span>
+        <span class="names"><span>Сушия</span><span>Мама манана</span><span>Pesto Cafe</span><span>Smart Plaza</span><span>та інші</span></span>
       </div>
     </div>
     <div class="hero-card">
@@ -823,10 +874,9 @@
   document.querySelectorAll('.qa button').forEach(btn => {
     btn.addEventListener('click', () => {
       const qa = btn.parentElement;
-      const ans = qa.querySelector('.ans');
       const open = qa.classList.contains('open');
-      document.querySelectorAll('.qa').forEach(x => { x.classList.remove('open'); x.querySelector('.ans').style.maxHeight = null; });
-      if (!open) { qa.classList.add('open'); ans.style.maxHeight = ans.scrollHeight + 'px'; }
+      document.querySelectorAll('.qa').forEach(x => x.classList.remove('open'));
+      if (!open) qa.classList.add('open');
     });
   });
 
